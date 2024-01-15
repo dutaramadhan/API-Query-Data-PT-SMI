@@ -39,7 +39,7 @@ def getEmbeddings(text):
 def get_data():
     query = request.args.get('query')
     query_embedding = getEmbeddings(query)
-    query_vector = query_embedding.data[0].embedding
+    query_vector = query_embedding['data'][0]['embedding']
     results = model.vector_search(query_vector)
     
     response_data = []
@@ -56,4 +56,4 @@ def get_data():
     return jsonify(response_data)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
