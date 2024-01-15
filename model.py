@@ -14,19 +14,24 @@ def vector_search(query_vector, limit=3):
   conn = psycopg2.connect(**db_params)
   cursor = conn.cursor()
   sql_query = """
-  SELECT
-      SUM(data.embedding[i] * query) AS similarity,
-      id,
-      data.content
-  FROM
-      data,
-      unnest(%s) WITH ORDINALITY arr(query, i)
-  WHERE embedding IS NOT NULL
-  GROUP BY
-      data.id
-  ORDER BY
-      similarity DESC
-  LIMIT %s;
+SELECT
+    SUM(data.embedding[i] * query) AS similarity,
+    data.id,
+    source_title,
+    data.content 
+FROM
+    data
+JOIN
+    unnest(%s) WITH ORDINALITY arr(query, i) ON true
+JOIN
+    source_metadata ON data.source_id = source_metadata.id
+WHERE
+    embedding IS NOT NULL
+GROUP BY
+    data.id, source_title, data.content  -- Include all non-aggregated columns in GROUP BY
+ORDER BY
+    similarity DESC
+LIMIT %s;
   """
 
   # Execute the query with the Python array as a parameter
