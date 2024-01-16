@@ -1,6 +1,9 @@
 import psycopg2
 from psycopg2 import sql
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 db_params = {
     'host': os.getenv('DB_HOST'),
