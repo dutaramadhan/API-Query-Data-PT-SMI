@@ -9,16 +9,8 @@ import requests
 
 app = Flask(__name__)
 load_dotenv()
-#client = OpenAI(api_key = os.getenv('API_KEY'))
 
 def get_embedding(text):
-   response = client.embeddings.create(
-    input = text,
-    model="text-embedding-ada-002"
-    )
-   return response
-
-def getEmbeddings(text):
     url = "https://api.openai.com/v1/embeddings"
 
     payload = json.dumps({
@@ -39,7 +31,7 @@ def getEmbeddings(text):
 def get_data():
     query = request.args.get('query')
     try:
-        query_embedding = getEmbeddings(query)
+        query_embedding = get_embedding(query)
         query_vector = query_embedding['data'][0]['embedding']
         results = model.vector_search(query_vector)
     
