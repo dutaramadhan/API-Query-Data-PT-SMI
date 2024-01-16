@@ -25,17 +25,21 @@ def get_embedding(text):
     }
     response = requests.request("POST", url, headers=headers, data=payload)
 
-    return response.json()
+    return response
 
 @app.route('/smi/api/embedding/query', methods=['GET'])
 def get_data():
     query = request.args.get('query')
     try:
-        query_embedding = get_embedding(query)
+        response = get_embedding(query)
+        query_embedding = response.json()
+
+        if "error" in query_embedding:
+            raise Exception(query_embedding["error"]["message"])
+        
         query_vector = query_embedding['data'][0]['embedding']
         results = model.vector_search(query_vector)
-    
-        response_data = []
+        response_data = []  
         for result in results:
             entry = {
                 "similarity": result[0],
@@ -47,8 +51,9 @@ def get_data():
 
         response_data = {"result": response_data}
         return jsonify(response_data)
+    
     except Exception as e:
-        return e 
+        return jsonify({"error": str(e)}) 
 
 if __name__ == '__main__':
     app.run(debug=False)
