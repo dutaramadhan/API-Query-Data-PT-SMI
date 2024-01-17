@@ -13,7 +13,7 @@ db_params = {
     'port': os.getenv('DB_PORT'),
 }
 
-def vector_search(query_vector, limit=3):
+def vector_search(query_vector, limit=10):
   conn = psycopg2.connect(**db_params)
   cursor = conn.cursor()
   sql_query = """
