@@ -24,7 +24,7 @@ def vector_search(query_vector, limit=3):
         content
     FROM data
     JOIN source_metadata ON data.source_id = source_metadata.id
-    WHERE emd IS NOT NULL
+    WHERE embedding IS NOT NULL
     ORDER BY similarity DESC
     LIMIT %s;
   """
