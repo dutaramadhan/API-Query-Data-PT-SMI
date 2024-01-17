@@ -18,7 +18,7 @@ def vector_search(query_vector, limit=3):
   cursor = conn.cursor()
   sql_query = """
     SELECT 
-        (emd <#> %s) * -1 AS similarity,
+        (embedding <#> %s) * -1 AS similarity,
         data.id,
         source_title,
         content
