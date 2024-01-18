@@ -38,7 +38,7 @@ def get_data():
             raise Exception(query_embedding["error"]["message"])
         
         query_vector = query_embedding['data'][0]['embedding']
-        results = model.vector_search(query_vector)
+        results = model.vector_search(query_vector) + model.vector_search_header(query_vector)
         response_data = []  
         for result in results:
             entry = {
