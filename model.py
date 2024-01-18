@@ -21,7 +21,8 @@ def vector_search(query_vector, limit=5):
         (embedding <#> %s) * -1 AS similarity,
         data.id,
         source_title,
-        content
+        content,
+        total_tokens
     FROM data
     JOIN source_metadata ON data.source_id = source_metadata.id
     WHERE embedding IS NOT NULL
@@ -45,7 +46,8 @@ def vector_search_header(query_vector, limit=5):
         (header_embedding <#> %s) * -1 AS similarity,
         data.id,
         source_title,
-        content
+        content,
+        total_tokens
     FROM data
     JOIN source_metadata ON data.source_id = source_metadata.id
     WHERE header_embedding IS NOT NULL

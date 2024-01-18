@@ -45,7 +45,8 @@ def get_data():
                 "similarity": result[0],
                 "id": result[1],
                 "source_title": result[2],
-                "content": result[3]
+                "content": result[3],
+                "total_tokens": result[4],
             }
             response_data.append(entry)
 
