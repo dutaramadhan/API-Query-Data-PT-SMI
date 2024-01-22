@@ -38,8 +38,7 @@ def get_data():
             raise Exception(query_embedding["error"]["message"])
         
         query_vector = query_embedding['data'][0]['embedding']
-        #results = model.vector_search_content(query_vector) + model.vector_search_header(query_vector)
-        results = model.vector_search(query_vector)
+        results = model.vector_search(query_vector) + model.vector_search_header(query_vector)
         response_data = []  
         for result in results:
             entry = {
@@ -49,8 +48,6 @@ def get_data():
                 "source_title": result[3],
                 "content": result[4],
                 "total_tokens": result[5],
-                "similarity_header": result[6],
-                "similarity_content": result[7],
             }
             response_data.append(entry)
 
