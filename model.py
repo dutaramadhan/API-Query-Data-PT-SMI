@@ -84,6 +84,7 @@ def vector_search(query_vector, limit=10):
     SELECT 
       GREATEST(similarity_header, similarity_content) AS similarity,
       data.id,
+      source_uri,
       source_title,
       content,
       total_tokens,

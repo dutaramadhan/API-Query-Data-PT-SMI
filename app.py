@@ -45,11 +45,12 @@ def get_data():
             entry = {
                 "similarity": result[0],
                 "id": result[1],
-                "source_title": result[2],
-                "content": result[3],
-                "total_tokens": result[4],
-                "similarity_header": result[5],
-                "similarity_content": result[6],
+                "source_uri": result[2],
+                "source_title": result[3],
+                "content": result[4],
+                "total_tokens": result[5],
+                "similarity_header": result[6],
+                "similarity_content": result[7],
             }
             response_data.append(entry)
 
