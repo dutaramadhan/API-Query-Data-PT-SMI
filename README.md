@@ -69,7 +69,28 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
     ```
 
 ## How to Deploy
-
+1. Buat file .env
+   ```
+      API_KEY = ...
+      DB_HOST = ... 
+      DB_DATABASE = ...
+      DB_USER = ...
+      DB_PASSWORD = ...
+      DB_PORT = ...
+      APP_PORT = ...
+   ```
+2. Build docker image
+   ```
+   docker build -t api-query .
+   ```
+3. Run docker image
+   ```
+   docker run -d -p 5000:5000 --name api-query api-query
+   ```
+4. Cek apakah server sedang berjalan
+    ```
+    http://<ip-host>:5000/
+    ```
 ## API Endpoint
  - ##### Route
    ```
