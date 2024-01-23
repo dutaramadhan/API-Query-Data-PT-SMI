@@ -30,6 +30,9 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 ### 1. Postgresql
 Skema database
 ```
+CREATE DATABASE IF NOT EXISTS your_database_name;
+```
+```
 CREATE TABLE IF NOT EXISTS public.source_metadata
 (
     source_uri character varying,
