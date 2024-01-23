@@ -28,7 +28,7 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
    git clone https://github.com/dutaramadhan/API-Query-Data-PT-SMI.git
    ```
 2. Buka direktori API-Query-Data-PT-SMI
-3. Install virtual environtment pyhton
+3. Install pyhton virtual environtment 
    ```
    pip install virtualenv
    ```
