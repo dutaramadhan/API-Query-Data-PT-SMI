@@ -1,15 +1,33 @@
 <h1 align="center"> Query API </h1>
 
+## Table of Contents
+1. [Information About API](#api-info)
+2. [Our Main Feature](#main-feature)
+3. [System's Flow](#systems-flow)
+4. [Tech Stack](#tech-stack)
+5. [How to Set Up](#set-up)
+   
+   a. [Postgresql](#postgres)
+   
+   b. [pgvector](#pgvector)
+7. [How to Run Locally](#run-local)
+8. [How to Deploy](#deploy)
+9. [API Endpoint](#endpoint)
+10. [Related Repository](#related-repo)
+
+<a name="api-info"></a>
 ## Information About this API
 API ini berfungsi untuk melakukan query atau retrieval data dari database. User akan memberikan input berupa teks yang kemudian input tersebut akan di-embedding dan hasil dari embedding tersebut digunakan untuk mencari simmilarity antara input dengan semua data yang ada di database. API akan memberikan response berupa 10 buah data yang terdiri dari 5 data yang content-nya memiliki nilai simmilarity paling tinggi dengan input dan 5 data yang header-nya memiliki nilai simmilarity paling tinggi dengan input. Response tersebut di-deliver kepada user dalam format JSON.
 
+<a name="main-feature"></a>
 ## Our Main Feature
 ### 1. Embedding Text
 Input teks dari user di-embedding menggunakan model "text-embedding-ada-002" dari OpenAI yang menghasilkan output berupa embedding vector dengan dimensi 1536 dan memiliki panjang vector 1 (ternormalisasi).
 ### 2. Vector Search
 Hasil embedding dari input user akan di-dot product dengan embedding vector dari content dan header setiap data yang ada pada database. Hasil dot product tersebut menghasilkan simmilarity antara input user dengan setiap content dan header dari data yang ada pada database. Nilai simmilarity input dengan content dan header diurutkan dari nilai terbesar hingga terkecil. Hasilnya diambil 5 data dengan nilai simmilarity content terbesar dan 5 data dengan nilai simmilarity header terbesar.
 
-## Alur Sistem
+<a name="systems-flow"></a>
+## System's Flow
 ![Alur Sistem](https://drive.google.com/uc?id=14XjApjDHPmihbtRHg-LN9Ac9ZzBmiVTL)
 1. Sistem API Query menerima input berupa query (string)
 2. Fetch request ke API OpenAI dengan query (string) sebagai masukan untuk proses embedding
@@ -18,6 +36,7 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 5. Diperoleh beberapa data yang relevan
 6. Data dikembalikan sebagai response
 
+<a name="tech-stack"></a>
 ## Tech Stack
 ### 1. Python
 ### 2. Flask
@@ -26,7 +45,9 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 ### 5. pgvector
 ### 6. Docker
 
+<a name="set-up"></a>
 ## How to Set Up
+<a name="postgres"></a>
 ### 1. Postgresql
 Skema database
 ```
@@ -59,9 +80,11 @@ CREATE TABLE IF NOT EXISTS public.data
         ON DELETE NO ACTION
 )
 ```
+<a name="pgvector"></a>
 ### 2. pgvector
 Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgvector'>repositori github pgvector</a>
 
+<a name="run-local"></a>
 ## How to Run Locally
 1. Clone repositori ini
    ```
@@ -108,6 +131,7 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
     http://localhost:5000/
     ```
 
+<a name="deploy"></a>
 ## How to Deploy
 1. Buat file .env
    ```
@@ -131,6 +155,8 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
     ```
     http://<ip-host>:5000/
     ```
+
+<a name="endpoint"></a>
 ## API Endpoint
  - ##### Route
    ```
@@ -141,7 +167,7 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
   ```
   query: string
   ```
-  
+
 - ##### Response
   ```
   {
@@ -158,6 +184,7 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
   }
   ```
 
+<a name="related-repo"></a>
 ## Related Repository
 - <a href='https://github.com/dutaramadhan/API-Otomasi-ETL-PT-SMI'>API-Otomasi-ETL-PT-SMI</a>
 
