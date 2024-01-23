@@ -18,5 +18,23 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 ### 6. Docker
 
 ## How to Set Up
+### 1. Postgresql
+### 2. pgvector
+Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgvector'>repositori github pgvector</a>
 
 ## How to Run Locally
+
+## How to Deploy
+
+## API Endpoint
+ - ##### Route
+   ```
+   GET /smi/api/embedding/query
+   ```
+
+- ##### Parameters
+  ```
+  query: string
+  ```
+
+
