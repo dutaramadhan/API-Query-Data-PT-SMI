@@ -56,5 +56,9 @@ def get_data():
     except Exception as e:
         return jsonify({"error": str(e)}) 
 
+@app.route('/')
+def info():
+    return 'Server is Running on port ' + os.getenv('APP_PORT') 
+
 if __name__ == '__main__':
     app.run(debug=False)
