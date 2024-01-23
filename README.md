@@ -9,6 +9,15 @@ Input teks dari user di-embedding menggunakan model "text-embedding-ada-002" dar
 ### 2. Vector Search
 Hasil embedding dari input user akan di-dot product dengan embedding vector dari content dan header setiap data yang ada pada database. Hasil dot product tersebut menghasilkan simmilarity antara input user dengan setiap content dan header dari data yang ada pada database. Nilai simmilarity input dengan content dan header diurutkan dari nilai terbesar hingga terkecil. Hasilnya diambil 5 data dengan nilai simmilarity content terbesar dan 5 data dengan nilai simmilarity header terbesar.
 
+## Alur Sistem
+![Alur Sistem](https://drive.google.com/uc?id=14XjApjDHPmihbtRHg-LN9Ac9ZzBmiVTL)
+1. Sistem API Query menerima input berupa query (string)
+2. Fetch request ke API OpenAI dengan query (string) sebagai masukan untuk proses embedding
+3. Hasil embedding diperoleh berupa vektor berdimensi 1536
+4. Vector digunakan untuk search data ke database berdasarkan vector similarity (dot product antara vektor query dan vektor data)
+5. Diperoleh beberapa data yang relevan
+6. Data dikembalikan sebagai response
+
 ## Tech Stack
 ### 1. Python
 ### 2. Flask
