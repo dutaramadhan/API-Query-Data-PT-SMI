@@ -1,7 +1,7 @@
 <h1 align="center"> Query API </h1>
 
 ## Information About this API
-API ini berfungsi untuk melakukan query atau retrieval data dari database. Pengguna akan memberikan input berupa teks yang kemudian input tersebut akan di-embedding dan hasil dari embedding tersebut digunakan untuk mencari simmilarity antara input dengan semua data yang ada di database. API akan memberikan response berupa 10 buah data yang terdiri dari 5 data yang content-nya memiliki nilai simmilarity paling tinggi dengan input dan 5 data yang header-nya memiliki nilai simmilarity paling tinggi dengan input. Response tersebut di-deliver kepada user dalam format JSON.
+API ini berfungsi untuk melakukan query atau retrieval data dari database. User akan memberikan input berupa teks yang kemudian input tersebut akan di-embedding dan hasil dari embedding tersebut digunakan untuk mencari simmilarity antara input dengan semua data yang ada di database. API akan memberikan response berupa 10 buah data yang terdiri dari 5 data yang content-nya memiliki nilai simmilarity paling tinggi dengan input dan 5 data yang header-nya memiliki nilai simmilarity paling tinggi dengan input. Response tersebut di-deliver kepada user dalam format JSON.
 
 ## Our Main Feature
 ### 1. Embedding Text
