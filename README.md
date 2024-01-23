@@ -128,5 +128,5 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
   ```
 
 ## Related Repository
-<a href='https://github.com/dutaramadhan/API-Otomasi-ETL-PT-SMI'>API-Otomasi-ETL-PT-SMI</a>
+- <a href='https://github.com/dutaramadhan/API-Otomasi-ETL-PT-SMI'>API-Otomasi-ETL-PT-SMI</a>
 
