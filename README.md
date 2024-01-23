@@ -28,6 +28,34 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 
 ## How to Set Up
 ### 1. Postgresql
+Skema database
+```
+CREATE TABLE IF NOT EXISTS public.source_metadata
+(
+    source_uri character varying,
+    source_name character varying,
+    source_title character varying,
+    created_at timestamp without time zone DEFAULT now(),
+    id SERIAL NOT NULL,
+    CONSTRAINT source_metadata_pkey PRIMARY KEY (id)
+)
+```
+```
+CREATE TABLE IF NOT EXISTS public.data
+(
+    content text,
+    total_tokens integer,
+    source_id integer,
+    id SERIAL NOT NULL,
+    embedding vector(1536),
+    header_embedding vector(1536),
+    CONSTRAINT data_pkey PRIMARY KEY (id),
+    CONSTRAINT source FOREIGN KEY (source_id)
+        REFERENCES public.source_metadata (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+```
 ### 2. pgvector
 Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgvector'>repositori github pgvector</a>
 
