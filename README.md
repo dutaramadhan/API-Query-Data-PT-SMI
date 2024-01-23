@@ -101,5 +101,21 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
   ```
   query: string
   ```
+  
+- ##### Response
+  ```
+  {
+     "result": [
+        {
+           "content": string,
+           "id": int,
+           "similarity": double,
+           "source_title": string,
+           "source_uri": string,
+           "total_tokens": int
+        }
+     ]
+  }
+  ```
 
 
