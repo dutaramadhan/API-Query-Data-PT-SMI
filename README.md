@@ -12,8 +12,9 @@
    b. [pgvector](#pgvector)
 7. [How to Run Locally](#run-local)
 8. [How to Deploy](#deploy)
-9. [API Endpoint](#endpoint)
-10. [Related Repository](#related-repo)
+9. [Live Instance](#live-instance)
+10. [API Endpoint](#endpoint)
+11. [Related Repository](#related-repo)
 
 <a name="api-info"></a>
 ## Information About this API
@@ -155,6 +156,9 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
     ```
     http://<ip-host>:5000/
     ```
+
+## Live Instance
+http://10.10.6.69:5000
 
 <a name="endpoint"></a>
 ## API Endpoint
