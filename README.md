@@ -3,9 +3,12 @@
 ## Table of Contents
 1. [Information About API](#api-info)
 2. [Our Main Feature](#main-feature)
-3. [System's Flow](#systems-flow)
-4. [Tech Stack](#tech-stack)
-5. [How to Set Up](#set-up)
+   a. [Embedding Text](#embedding)
+
+   b. [Vector Search](#vector-search)
+4. [System's Flow](#systems-flow)
+5. [Tech Stack](#tech-stack)
+6. [How to Set Up](#set-up)
    
    a. [Postgresql](#postgres)
    
@@ -22,9 +25,11 @@ API ini berfungsi untuk melakukan query atau retrieval data dari database. User 
 
 <a name="main-feature"></a>
 ## Our Main Feature
-### 1. Embedding Text
+<a name="embedding"></a>
+### a. Embedding Text
 Input teks dari user di-embedding menggunakan model "text-embedding-ada-002" dari OpenAI yang menghasilkan output berupa embedding vector dengan dimensi 1536 dan memiliki panjang vector 1 (ternormalisasi).
-### 2. Vector Search
+<a name="vector-search"></a>
+### b. Vector Search
 Hasil embedding dari input user akan di-dot product dengan embedding vector dari content dan header setiap data yang ada pada database. Hasil dot product tersebut menghasilkan simmilarity antara input user dengan setiap content dan header dari data yang ada pada database. Nilai simmilarity input dengan content dan header diurutkan dari nilai terbesar hingga terkecil. Hasilnya diambil 5 data dengan nilai simmilarity content terbesar dan 5 data dengan nilai simmilarity header terbesar.
 
 <a name="systems-flow"></a>
@@ -49,7 +54,7 @@ Hasil embedding dari input user akan di-dot product dengan embedding vector dari
 <a name="set-up"></a>
 ## How to Set Up
 <a name="postgres"></a>
-### 1. Postgresql
+### a. Postgresql
 Skema database
 ```
 CREATE DATABASE IF NOT EXISTS your_database_name;
@@ -82,7 +87,7 @@ CREATE TABLE IF NOT EXISTS public.data
 )
 ```
 <a name="pgvector"></a>
-### 2. pgvector
+### b. pgvector
 Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgvector'>repositori github pgvector</a>
 
 <a name="run-local"></a>
@@ -157,6 +162,7 @@ Untuk lebih detailnya bisa dilihat pada <a href='https://github.com/pgvector/pgv
     http://<ip-host>:5000/
     ```
 
+<a name="live-instance"></a>
 ## Live Instance
 http://10.10.6.69:5000
 
