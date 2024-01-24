@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [Information About API](#api-info)
 2. [Our Main Feature](#main-feature)
+
    a. [Embedding Text](#embedding)
 
    b. [Vector Search](#vector-search)
