@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
-#from openai import OpenAI
+from openai import OpenAI
 import psycopg2
 import model
 import json
@@ -9,21 +9,13 @@ import requests
 
 app = Flask(__name__)
 load_dotenv()
+client = OpenAI(api_key = os.getenv('API_KEY'))
 
 def get_embedding(text):
-    url = "https://api.openai.com/v1/embeddings"
-
-    payload = json.dumps({
-        "input": text,
-        "model": "text-embedding-ada-002",
-        "encoding_format": "float"
-    })
-    headers = {
-        'Authorization': 'Bearer ' + os.getenv('API_KEY'),
-        'Content-Type': 'application/json',
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-
+    response = client.embeddings.create(
+        input=text,
+        model="text-embedding-ada-002"
+    )
     return response
 
 @app.route('/smi/api/embedding/query', methods=['GET'])
@@ -31,12 +23,11 @@ def get_data():
     query = request.args.get('query')
     try:
         response = get_embedding(query)
-        query_embedding = response.json()
 
-        if "error" in query_embedding:
-            raise Exception(query_embedding["error"]["message"])
+        if "error" in query:
+            raise Exception(response.error.message)
         
-        query_vector = query_embedding['data'][0]['embedding']
+        query_vector = response.data[0].embedding
         results = model.vector_search(query_vector) + model.vector_search_header(query_vector)
         response_data = []  
         for result in results:
